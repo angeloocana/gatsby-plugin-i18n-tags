@@ -33,8 +33,7 @@ plugins: [
     options: { // Default options
       tagPage: 'src/templates/tag-page.js',
       tagsUrl: '/tags/',
-      langKeyForNull: 'any',
-      langKeyDefault: 'en'
+      langKeyForNull: 'any'
     }
   }
 ]
