@@ -1,5 +1,5 @@
 ## master
 
-## 0.0.5 (August 30, 2017)
+## 0.0.1 (September 09, 2017)
 
-* Add options.
+* Initial public release.
