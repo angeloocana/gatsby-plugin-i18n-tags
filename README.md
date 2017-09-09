@@ -38,3 +38,37 @@ plugins: [
   }
 ]
 ```
+
+
+2. Add **tags** prop to your .md files
+```markdown
+    ---
+    title: Your awesome title
+    tags:
+      - Linux
+      - Arch
+    ---
+```
+
+
+3. Query!
+
+```graphql
+  {
+    allMarkdownRemark{
+      edges{
+        node{
+          frontmatter{
+            title
+          }
+          fields{
+            tagSlugs {
+              tag
+              link
+            }
+          }
+        }
+      }
+    }
+  }
+```
