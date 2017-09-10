@@ -13,7 +13,7 @@ Add tags for different languages (i18n) for Gatsby.
 
 ## Examples
 
-https://angeloocana.com (source)https://github.com/angeloocana/angeloocana
+* [angeloocana.com](https://angeloocana.com/en/tags) [(source)](https://github.com/angeloocana/angeloocana)
 
 
 ## Install
