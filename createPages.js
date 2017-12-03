@@ -19,6 +19,10 @@ var _path2 = _interopRequireDefault(_path);
 
 var _logError = require('./logError');
 
+var _ramda = require('ramda');
+
+var _ramda2 = _interopRequireDefault(_ramda);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var createPages = function createPages(_ref, pluginOptions) {
@@ -37,7 +41,7 @@ var createPages = function createPages(_ref, pluginOptions) {
           throw result.errors;
         }
 
-        var langTags = result.data.allMarkdownRemark.edges.reduce(function (tags, edge) {
+        var langTags = result.data.allMarkdownRemark.edges.filter(_ramda2.default.path(['node', 'fields', 'langKey'])).reduce(function (tags, edge) {
           var langKey = edge.node.fields.langKey;
           tags[langKey] = (tags[langKey] || []).concat(edge.node.frontmatter.tags);
           return tags;

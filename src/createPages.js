@@ -2,6 +2,7 @@ import _ from 'lodash';
 import {defaultOptions} from './defaultOptions';
 import path from 'path';
 import {logError} from './logError';
+import R from 'ramda';
 
 const createPages = ({ graphql, boundActionCreators }, pluginOptions) => {
   const { createPage } = boundActionCreators;
@@ -19,11 +20,13 @@ const createPages = ({ graphql, boundActionCreators }, pluginOptions) => {
           throw result.errors;
         }
   
-        const langTags = result.data.allMarkdownRemark.edges.reduce((tags, edge) => {
-          const langKey = edge.node.fields.langKey;
-          tags[langKey] = (tags[langKey] || []).concat(edge.node.frontmatter.tags);
-          return tags;
-        }, {});
+        const langTags = result.data.allMarkdownRemark.edges
+          .filter(R.path(['node', 'fields', 'langKey']))
+          .reduce((tags, edge) => {
+            const langKey = edge.node.fields.langKey;
+            tags[langKey] = (tags[langKey] || []).concat(edge.node.frontmatter.tags);
+            return tags;
+          }, {});
   
         Object.keys(langTags).forEach(langKey => {
           const tags = _.uniq(langTags[langKey])
